@@ -74,6 +74,12 @@ class BitTorrent
     @package.relay_event self, :complete
   end
 
+  def remove_torrent(infohash)
+    if @@server
+      @@server.remove_torrent infohash
+    end
+  end
+
   def ip; @@server.ip; end
   def port; @@server.port; end
   def peer_info; @cont.peer_info; end

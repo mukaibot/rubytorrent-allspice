@@ -67,6 +67,12 @@ class Server
     @controllers[mi.info.sha1].start
   end
 
+  def remove_torrent(infohash)
+    if @controllers.include? infohash
+      @controllers[infohash].shutdown
+    end
+  end
+
   def add_connection(name, cont, socket)
     begin
       shake_hands(socket, cont.info_hash)
